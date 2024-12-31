@@ -16,7 +16,10 @@ const START_SERVER = () => {
   //router
   app.use(express.json())
   
-  app.use(cors());
+  app.use(cors({
+    origin: '*',
+    allowedHeaders: 'X-Requested-With, Content-Type, auth-token',
+}));
   app.use('/v1', APIs_V1)
   app.get('/', async (req, res) => {
     console.log(env.AUTHOR);
