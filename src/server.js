@@ -3,7 +3,7 @@
  * YouTube: https://youtube.com/@trungquandev
  * "A bit of fragrance clings to the hand that gives flowers!"
  */
-
+const cors = require("cors");
 import express from 'express'
 import { CONNECT_DB, GET_DB } from '~/config/mongodb'
 import { mapOrder } from '~/utils/sorts.js'
@@ -15,6 +15,8 @@ const START_SERVER = () => {
   const app = express()
   //router
   app.use(express.json())
+  
+  app.use(cors());
   app.use('/v1', APIs_V1)
   app.get('/', async (req, res) => {
     console.log(env.AUTHOR);
